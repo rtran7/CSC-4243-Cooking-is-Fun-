@@ -2,12 +2,14 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 public class DragTesting : MonoBehaviour, IDragHandler, IPointerDownHandler, IBeginDragHandler,IEndDragHandler
 {
-    //Grab the transform, or position, of the item
+    //Grab the transform, or position, of the ingredient
     private RectTransform rectTransform;
     //Grab the Canvas Group to disble interactibility
     private CanvasGroup canvasGroup;
     //Grab the Tortilla object
     private GameObject tortilla;
+    //Grab the script from the victory screen
+    private VictoryScreen victoryScript;
 
     //Grab the canvas object in order to grab its scale
     [SerializeField] private Canvas canvas;
@@ -21,6 +23,15 @@ public class DragTesting : MonoBehaviour, IDragHandler, IPointerDownHandler, IBe
         canvasGroup = GetComponent<CanvasGroup>();
         //Grab the Tortilla object
         tortilla = GameObject.Find("Tortilla");
+        //Set the gameobject's layer with this script to ingredients
+        gameObject.layer = LayerMask.NameToLayer("Ingredients");
+
+        //Grab the victoryManager game object
+        GameObject victoryManager = GameObject.Find("VictoryManager");
+        //Initialize victoryScript
+        victoryScript = victoryManager.GetComponent<VictoryScreen>();
+        //Increment ingredientCount
+        victoryScript.incrementCount();
     }
 
     //This function triggers when player starts dragging the mouse
@@ -40,15 +51,18 @@ public class DragTesting : MonoBehaviour, IDragHandler, IPointerDownHandler, IBe
     //This function triggers when player stops dragging the mouse
     public void OnEndDrag(PointerEventData eventData)
     {
-        canvasGroup.blocksRaycasts = true;
-
         RectTransform tortillaTrans = tortilla.GetComponent<RectTransform>();
 
         //Check if the object is on the tortilla
         if (IsOverlapping(rectTransform, tortillaTrans))
         {
+            //Lock the ingredient position to tortilla
             rectTransform.anchoredPosition = tortillaTrans.anchoredPosition;
+            //decrement ingredientCount
+            victoryScript.decrementCount();
         }
+
+        else { canvasGroup.blocksRaycasts = true; }
     }
 
     // This function triggers when player clicks on mousebutton

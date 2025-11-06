@@ -4,6 +4,7 @@ public class Timer : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] float remainingTime;
+    public GameOverScreen gameOver;
 
     // Update is called once per frame
     void Update()
@@ -11,7 +12,14 @@ public class Timer : MonoBehaviour
         if (remainingTime > 0)
         { remainingTime -= Time.deltaTime; }
         else if (remainingTime < 0)
-        { remainingTime = 0; timerText.color = Color.red; }
+        { 
+            //Make sure timer is always at 0
+            remainingTime = 0; 
+            // Change text color 
+            timerText.color = Color.red;
+            // Turn on the  game over screen
+            gameOver.Setup();
+        }
 
         int min = Mathf.FloorToInt(remainingTime / 60);
         int second = Mathf.FloorToInt(remainingTime % 60);
