@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-public class DragTesting : MonoBehaviour, IDragHandler, IPointerDownHandler, IBeginDragHandler,IEndDragHandler
+public class IngredientsScript : MonoBehaviour, IDragHandler, IPointerDownHandler, IBeginDragHandler, IEndDragHandler
 {
     //Grab the transform, or position, of the ingredient
     private RectTransform rectTransform;
@@ -69,7 +69,7 @@ public class DragTesting : MonoBehaviour, IDragHandler, IPointerDownHandler, IBe
     }
 
     // This function triggers when player clicks on mousebutton
-    public void OnPointerDown(PointerEventData eventData) {}
+    public void OnPointerDown(PointerEventData eventData) { }
 
     //This function compares this object's transform to the tortilla object
     // If both of these objects overlap, lock this object's transform to the

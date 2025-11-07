@@ -4,6 +4,7 @@ public class Timer : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] float remainingTime;
+    //Public variable to hold an object with the GameOverScreen script
     public GameOverScreen gameOver;
 
     // Update is called once per frame

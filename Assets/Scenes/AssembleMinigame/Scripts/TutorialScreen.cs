@@ -2,15 +2,26 @@ using UnityEngine;
 
 public class TutorialScreen : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    //Get Tutorial game object
+    private GameObject background;
+
+    void Awake()
     {
-        
+        //Grab the transform of this child object
+        Transform childTrans = transform.Find("TutorialScreen");
+        // Use transform to get the game object
+        background = childTrans.gameObject;
+        //Turn on the background
+        background.SetActive(true);
+        //Pause the game
+        Time.timeScale = 0;
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void startGame()
+    { 
+        background.SetActive(false);
+        Time.timeScale = 1;
     }
 }
