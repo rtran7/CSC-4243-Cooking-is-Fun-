@@ -37,7 +37,7 @@ public class Dragging : MonoBehaviour
         return mainCamera.ScreenToWorldPoint(mousePoint);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Plate"))
         {
@@ -49,4 +49,8 @@ public class Dragging : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+   
+
+
 }
