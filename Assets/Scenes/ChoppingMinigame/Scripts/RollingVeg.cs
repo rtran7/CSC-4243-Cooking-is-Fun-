@@ -16,8 +16,7 @@ public class RollingVeg : MonoBehaviour
 
     void Start()
     {
- 
-    
+    startPos = transform.position;
     startPos.x = Mathf.Clamp(startPos.x, minX, maxX);
     startPos.y = Mathf.Clamp(startPos.y, minY, maxY);
     transform.position = startPos;
@@ -27,13 +26,15 @@ public class RollingVeg : MonoBehaviour
         
        
         Camera cam = Camera.main;
-        Vector3 bottomLeft = cam.ViewportToWorldPoint(new Vector3(0, 0, 0));
-        Vector3 topRight = cam.ViewportToWorldPoint(new Vector3(1, 1, 0));
+        Vector3 bottomLeft = cam.ViewportToWorldPoint(new Vector3(0, 0, cam.nearClipPlane));
+        Vector3 topRight = cam.ViewportToWorldPoint(new Vector3(1, 1, cam.nearClipPlane));
         
         minX = bottomLeft.x + edgePadding;
         maxX = topRight.x - edgePadding;
         minY = bottomLeft.y + edgePadding;
         maxY = topRight.y - edgePadding;
+
+    
     }
 
     void Update()
