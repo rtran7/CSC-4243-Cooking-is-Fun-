@@ -11,11 +11,15 @@ public class Dragging : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main;
+
+        Rigidbody2D body = GetComponent<Rigidbody2D>();
+    if (body != null)
+    {
+        body.bodyType = RigidbodyType2D.Dynamic; 
+        body.gravityScale = 0; 
+        body.linearDamping = 2f; 
     }
-
-   
-
-
+    }
     void OnMouseDown()
     {
         isDragging = true;
@@ -29,8 +33,6 @@ public class Dragging : MonoBehaviour
             transform.position = GetMouseWorldPosition() + offset;
         }
     }
-
-
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -54,7 +56,7 @@ public class Dragging : MonoBehaviour
 {
     isDragging = false;
     
-    if (hasBeenCounted) return; // Already counted
+    if (hasBeenCounted) return;
     
     Collider2D[] overlaps = Physics2D.OverlapCircleAll(transform.position, 0.5f);
     foreach (Collider2D col in overlaps)

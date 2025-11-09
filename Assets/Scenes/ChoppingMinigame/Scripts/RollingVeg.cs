@@ -59,6 +59,5 @@ public class RollingVeg : MonoBehaviour
         isSliced = true;
         rotationSpeed = 0f;
     }
-
     
 }

@@ -36,8 +36,6 @@ public class GameManager : MonoBehaviour
     void EndGame()
     {
         Debug.Log("All pieces collected! Game Over!");
-        Invoke("RestartGame", 2f);
     }
 
-   
 }
