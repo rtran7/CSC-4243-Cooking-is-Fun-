@@ -12,6 +12,8 @@ public class IngredientsScript : MonoBehaviour, IDragHandler, IPointerDownHandle
     private VictoryScreen victoryScript;
     //Grab the canvas object in order to grab its scale
     private Canvas canvas;
+    //Grab AudioSource
+    private AudioSource src;
 
     //Triggers when game starts
     private void Awake()
@@ -35,6 +37,11 @@ public class IngredientsScript : MonoBehaviour, IDragHandler, IPointerDownHandle
         victoryScript = victoryManager.GetComponent<VictoryScreen>();
         //Increment ingredientCount
         victoryScript.incrementCount();
+
+        //Grab audios source object
+        GameObject audioObj = GameObject.Find("IngredientClick");
+        //Grab audio source
+        src = audioObj.GetComponent<AudioSource>();
     }
 
     //This function triggers when player starts dragging the mouse
@@ -62,14 +69,19 @@ public class IngredientsScript : MonoBehaviour, IDragHandler, IPointerDownHandle
             //Lock the ingredient position to tortilla
             rectTransform.anchoredPosition = tortillaTrans.anchoredPosition;
             //decrement ingredientCount
-            victoryScript.decrementCount();
+            victoryScript.decrementCount(gameObject);
         }
 
         else { canvasGroup.blocksRaycasts = true; }
     }
 
     // This function triggers when player clicks on mousebutton
-    public void OnPointerDown(PointerEventData eventData) { }
+    public void OnPointerDown(PointerEventData eventData) 
+    {
+        //Play sfx
+        src.Play();
+
+    }
 
     //This function compares this object's transform to the tortilla object
     // If both of these objects overlap, lock this object's transform to the
