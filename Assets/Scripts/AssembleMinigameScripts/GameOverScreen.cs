@@ -44,7 +44,7 @@ public class GameOverScreen : MonoBehaviour
     //Function for the restart button
     public void restart()
     {
-
+        Time.timeScale = 1; 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     }
