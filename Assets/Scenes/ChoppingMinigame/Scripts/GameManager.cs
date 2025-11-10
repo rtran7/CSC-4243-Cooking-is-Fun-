@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     private int totalPieces;
     private int piecesOnPlate = 0;
 
+    public Victory2 victory2;
+
     void Awake()
     {
         if (Instance == null)
@@ -18,7 +20,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         
-        totalPieces = 14;
+        totalPieces = 4;
         Debug.Log("Total pieces to collect: " + totalPieces);
     }
 
@@ -27,9 +29,10 @@ public class GameManager : MonoBehaviour
         piecesOnPlate++;
         Debug.Log("Pieces on plate: " + piecesOnPlate + "/" + totalPieces);
 
-        if (piecesOnPlate >= totalPieces)
+        if (piecesOnPlate == totalPieces)
         {
             EndGame();
+            victory2.Setup();
         }
     }
 

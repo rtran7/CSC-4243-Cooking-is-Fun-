@@ -16,7 +16,7 @@ public class RollingVeg : MonoBehaviour
 
     void Start()
     {
-    startPos = transform.position;
+        startPos = transform.position;
     startPos.x = Mathf.Clamp(startPos.x, minX, maxX);
     startPos.y = Mathf.Clamp(startPos.y, minY, maxY);
     transform.position = startPos;
@@ -33,8 +33,9 @@ public class RollingVeg : MonoBehaviour
         maxX = topRight.x - edgePadding;
         minY = bottomLeft.y + edgePadding;
         maxY = topRight.y - edgePadding;
-
     
+
+
     }
 
     void Update()
