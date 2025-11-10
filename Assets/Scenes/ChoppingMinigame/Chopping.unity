@@ -236,7 +236,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!60 &38884548
@@ -2016,8 +2016,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 5.2995, y: -0.9347}
-  m_SizeDelta: {x: 1372.1836, y: 752.8683}
+  m_AnchoredPosition: {x: 5.2749, y: -0.5462}
+  m_SizeDelta: {x: 1660.7363, y: 982.5379}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1041894566
 MonoBehaviour:
@@ -2174,7 +2174,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!60 &1088505537
@@ -2416,7 +2416,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!212 &1095444190
@@ -3506,7 +3506,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!114 &1633459654
@@ -3592,7 +3592,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!212 &1656391187
@@ -3703,9 +3703,9 @@ PolygonCollider2D:
       - {x: 1.05, y: -0.57}
       - {x: 1.1999999, y: -0.45}
       - {x: 1.37, y: -0.16}
-      - {x: 1.42, y: 0.07}
-      - {x: 1.5699999, y: 0.7}
-      - {x: 1.5699999, y: 0.89}
+      - {x: 1.0882006, y: 0.3054416}
+      - {x: 1.0059401, y: 0.6327311}
+      - {x: 0.6741402, y: 0.6545584}
       - {x: -1.51, y: 0.89}
       - {x: -1.51, y: 0.84999996}
       - {x: -1.8306924, y: 0.85600406}
@@ -4045,7 +4045,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!212 &1801711868
@@ -4604,7 +4604,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!60 &1928475541
@@ -4891,7 +4891,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!212 &2061437299
@@ -5029,11 +5029,11 @@ PolygonCollider2D:
       - {x: -1.4305106, y: 0.23161516}
       - {x: -1.51, y: -0.12}
       - {x: -1.7910217, y: -0.1991924}
-      - {x: -1.7910217, y: -1.3042755}
-      - {x: 1.51, y: -1.2099999}
+      - {x: -1.7262117, y: -1.5886189}
+      - {x: 1.0563262, y: -1.636515}
       - {x: 1.51, y: -0.28}
-      - {x: 1.49, y: -0.26}
-      - {x: 1.42, y: -0.089999996}
+      - {x: 1.1011373, y: -0.43771452}
+      - {x: 0.9015161, y: -0.16108611}
   m_UseDelaunayMesh: 0
 --- !u!1 &2092689521
 GameObject:
@@ -5849,7 +5849,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!114 &752423053035377668
@@ -5981,7 +5981,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!114 &1225804362465134509
@@ -6223,7 +6223,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!222 &1626270403613218531
@@ -7361,7 +7361,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!114 &4453989381713643774
@@ -7812,7 +7812,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!50 &5164994297741839229
@@ -7839,7 +7839,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!50 &5196716283849754636
@@ -8925,9 +8925,10 @@ PolygonCollider2D:
     m_Paths:
     - - {x: 0.9, y: 0.155}
       - {x: 0.91999996, y: 0.24499999}
-      - {x: 0.91999996, y: 0.415}
-      - {x: -0.91999996, y: 0.415}
-      - {x: -1.1132896, y: 0.40351883}
+      - {x: 0.8924377, y: 0.65664136}
+      - {x: -1.1106143, y: 0.6420706}
+      - {x: -1.0715928, y: 0.36969227}
+      - {x: -1.1684141, y: 0.67536545}
       - {x: -0.52, y: -0.39499998}
       - {x: -0.44, y: -0.415}
       - {x: 0.39, y: -0.415}
@@ -9695,7 +9696,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!60 &7829798056581979621
@@ -9787,7 +9788,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!60 &7829798057031271719
@@ -10075,7 +10076,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!50 &8237327534092472569
@@ -10102,7 +10103,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!50 &8371307706850753659
@@ -10129,7 +10130,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!60 &8371307706850753660
@@ -10223,7 +10224,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!60 &8371307708014159034

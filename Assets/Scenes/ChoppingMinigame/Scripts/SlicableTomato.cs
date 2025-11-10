@@ -10,15 +10,17 @@ public class SlicableTomato : MonoBehaviour
 
     private AudioSource src;
 
+   
+
 
     void Awake()
     {
 
-
-
         GameObject audioObj = GameObject.Find("VegetableSlice");
         src = audioObj.GetComponent<AudioSource>();
     }
+
+
 
     public void setSlicedObject(GameObject slicedObject)
     {
@@ -30,10 +32,8 @@ public class SlicableTomato : MonoBehaviour
         return slicedObject;
     }
 
-
     public void Slice()
     {
-
         unslicedObject.SetActive(false);
         slicedObject.SetActive(true);
         RollingVeg rv = GetComponent<RollingVeg>();
