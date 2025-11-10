@@ -7,6 +7,8 @@ public class PauseScreen : MonoBehaviour
     // Check if we are paused
     private bool isPaused;
 
+    public static bool gameIsPaused=false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -14,6 +16,7 @@ public class PauseScreen : MonoBehaviour
         menu.SetActive(false);
         //Assume we're not paused
         isPaused = false;
+        gameIsPaused=false;
     }
 
     // Update is called once per frame
@@ -38,6 +41,7 @@ public class PauseScreen : MonoBehaviour
         Time.timeScale = 0f;
         //Set isPaused to true
         isPaused = true;
+        gameIsPaused=true;
 
     }
 
@@ -49,5 +53,6 @@ public class PauseScreen : MonoBehaviour
         Time.timeScale = 1f;
         //Set isPaused to false
         isPaused = false;
+        gameIsPaused=false;
     }
 }

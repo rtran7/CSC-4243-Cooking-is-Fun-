@@ -10,7 +10,9 @@ public class Hitbox : MonoBehaviour
   [SerializeField] private GameObject sliced;
 
   public void OnMouseExit()
-    {
+  {
+      if (TutorialScreen.tutorialPlaying || PauseScreen.gameIsPaused)
+           return;
 
     if(slicable.getSlicedObject() == null)
     {
