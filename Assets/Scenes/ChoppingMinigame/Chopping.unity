@@ -1422,8 +1422,8 @@ Transform:
   m_GameObject: {fileID: 707512554}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.8, y: 2.86, z: 0}
-  m_LocalScale: {x: 0.8029, y: 0.7789, z: 1}
+  m_LocalPosition: {x: -19.2, y: 5.81, z: 0}
+  m_LocalScale: {x: 1.7190341, y: 1.6676494, z: 2.1410313}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1536,7 +1536,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1983,8 +1983,8 @@ Transform:
   m_GameObject: {fileID: 1093731059}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.2117, y: -0.4703, z: 0}
-  m_LocalScale: {x: 10.537854, y: 3.128109, z: 1}
+  m_LocalPosition: {x: -5.6, y: -0.4703, z: 0}
+  m_LocalScale: {x: 12.44784, y: 6.5690284, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2331,7 +2331,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -765, y: -87}
+  m_AnchoredPosition: {x: -901.4, y: -110.9}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1155039024
@@ -2943,7 +2943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da1c1d2bb5c3c4d62b8c8c3622eb1d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RollingVeg
-  amplitude: 5
+  amplitude: 30
   speed: 2
   rotationSpeed: 100
   edgePadding: 0.5
@@ -3403,6 +3403,10 @@ PrefabInstance:
       propertyPath: gameOver
       value: 
       objectReference: {fileID: 110032751}
+    - target: {fileID: 1127380295819326801, guid: 51cc8594f7947427faeb2bc7de269010, type: 3}
+      propertyPath: remainingTime
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 6394117380938145946, guid: 51cc8594f7947427faeb2bc7de269010, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3437,7 +3441,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6394117380938145946, guid: 51cc8594f7947427faeb2bc7de269010, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.99116
+      value: 0.842486
       objectReference: {fileID: 0}
     - target: {fileID: 6394117380938145946, guid: 51cc8594f7947427faeb2bc7de269010, type: 3}
       propertyPath: m_LocalScale.y
@@ -3477,11 +3481,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6394117380938145946, guid: 51cc8594f7947427faeb2bc7de269010, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -802
+      value: -864.8
       objectReference: {fileID: 0}
     - target: {fileID: 6394117380938145946, guid: 51cc8594f7947427faeb2bc7de269010, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -170
+      value: -137.9
       objectReference: {fileID: 0}
     - target: {fileID: 6394117380938145946, guid: 51cc8594f7947427faeb2bc7de269010, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3498,6 +3502,10 @@ PrefabInstance:
     - target: {fileID: 7269340933740135431, guid: 51cc8594f7947427faeb2bc7de269010, type: 3}
       propertyPath: m_Name
       value: Timer Text
+      objectReference: {fileID: 0}
+    - target: {fileID: 8105784258991658419, guid: 51cc8594f7947427faeb2bc7de269010, type: 3}
+      propertyPath: m_margin.z
+      value: 89.08758
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5153,7 +5161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da1c1d2bb5c3c4d62b8c8c3622eb1d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RollingVeg
-  amplitude: 5
+  amplitude: 30
   speed: 2
   rotationSpeed: 100
   edgePadding: 0.5
@@ -6506,7 +6514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da1c1d2bb5c3c4d62b8c8c3622eb1d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RollingVeg
-  amplitude: 5
+  amplitude: 30
   speed: 2
   rotationSpeed: 100
   edgePadding: 0.5
@@ -6522,7 +6530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da1c1d2bb5c3c4d62b8c8c3622eb1d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RollingVeg
-  amplitude: 5
+  amplitude: 30
   speed: 2
   rotationSpeed: 100
   edgePadding: 0.5
@@ -6538,8 +6546,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da1c1d2bb5c3c4d62b8c8c3622eb1d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RollingVeg
-  amplitude: 5
-  speed: 2
+  amplitude: 30
+  speed: 5
   rotationSpeed: 100
   edgePadding: 0.5
 --- !u!61 &1279260388510509262
@@ -10481,7 +10489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da1c1d2bb5c3c4d62b8c8c3622eb1d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RollingVeg
-  amplitude: 5
+  amplitude: 30
   speed: 2
   rotationSpeed: 100
   edgePadding: 0.5
