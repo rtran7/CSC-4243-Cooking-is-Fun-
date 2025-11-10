@@ -3,7 +3,7 @@ using UnityEngine;
 public class RollingVeg : MonoBehaviour
 {
 
-     public float amplitude = 5f;
+     public float amplitude = 10f;
     public float speed = 2f;
     public float rotationSpeed = 100f;
     public float edgePadding = 0.5f;
