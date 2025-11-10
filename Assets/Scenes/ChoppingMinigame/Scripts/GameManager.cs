@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         
-        totalPieces = 4;
+        totalPieces = 10;
         Debug.Log("Total pieces to collect: " + totalPieces);
     }
 
