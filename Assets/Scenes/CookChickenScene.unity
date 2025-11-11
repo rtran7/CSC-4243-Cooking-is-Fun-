@@ -1656,7 +1656,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 960816005}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 960816007}
+        m_TargetAssemblyTypeName: ResultButton, Assembly-CSharp
+        m_MethodName: continueButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &960816005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1704,10 +1716,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 960816002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be9c1047e0e92c844b2c02b36883b217, type: 3}
+  m_Script: {fileID: 11500000, guid: 19886507f8a7518418e7375a2f4888c5, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayScene
-  scene: MainMenu
+  m_EditorClassIdentifier: Assembly-CSharp::ResultButton
+  gameHandler: {fileID: 2025546299}
+  scene: Assemble
 --- !u!1 &1013388655
 GameObject:
   m_ObjectHideFlags: 0

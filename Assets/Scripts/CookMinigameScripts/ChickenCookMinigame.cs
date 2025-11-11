@@ -44,13 +44,18 @@ public class ChickenCookMinigame : MonoBehaviour
     public bool _cooking;            // alias if you referenced this elsewhere
     public int _laps;                // how many times we wrapped past 12 o'clock clockwise
     public float _prevV = -1f;       // previous normalized value, -1 = not yet set
+    private bool taskCompleted;      // Keep track if the user successfully cooked chicken
 
     void Awake()
     {
         if (resultsPanel) resultsPanel.SetActive(false);
         if (meterGroupUI) meterGroupUI.SetActive(false);
         if (continueButton) continueButton.onClick.AddListener(OnContinue);
+        taskCompleted = false; // Assume that the player didn't complete the task
     }
+
+    //This function is used to return taskCompleted
+    public bool checkTask() { return taskCompleted; }
 
     // Called by your drag script when raw chicken is dropped on the pan
     public void BeginCooking()
@@ -133,6 +138,7 @@ public class ChickenCookMinigame : MonoBehaviour
             {
                 verdict = "Perfectly Cooked!";
                 verdictSprite = perfectSprite;
+                taskCompleted = true; //The task has been completed. Set to true
             }
         }
 
