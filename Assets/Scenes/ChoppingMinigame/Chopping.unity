@@ -8018,6 +8018,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6995860676380484704, guid: 9fa6ff291f60a1f4e9f9e00020f05ba2, type: 3}
+      propertyPath: m_text
+      value: Slice the vegetables and drag them to the plate. You have 30 seconds
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
