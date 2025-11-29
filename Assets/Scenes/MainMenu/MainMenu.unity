@@ -928,7 +928,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be9c1047e0e92c844b2c02b36883b217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayScene
-  scene: Chopping
+  scene: KitchenScene
 --- !u!1 &554427969
 GameObject:
   m_ObjectHideFlags: 0

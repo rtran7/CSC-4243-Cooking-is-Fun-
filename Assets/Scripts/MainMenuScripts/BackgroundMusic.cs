@@ -6,7 +6,7 @@ public class BackgroundMusic : MonoBehaviour
 
     void Awake()
     {
-        // Make sure there’s only one MusicManager
+        // Make sure there's only one MusicManager
         if (instance == null)
         {
             instance = this;
@@ -17,4 +17,7 @@ public class BackgroundMusic : MonoBehaviour
             Destroy(gameObject); // Prevent duplicates if scene reloads
         }
     }
+
+    public BackgroundMusic getInstance(){return instance;}
+    public void destroyInstance() => Destroy(instance.gameObject); 
 }

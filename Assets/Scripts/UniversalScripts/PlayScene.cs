@@ -9,7 +9,7 @@ public class PlayScene : MonoBehaviour
     public void playScene()
     {
 
-        SceneManager.LoadScene(scene);
+        SceneManager.LoadScene(scene, LoadSceneMode.Single);
 
     }
 }
