@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 128303122}
   - component: {fileID: 128303121}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: TaskPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -531,7 +531,7 @@ GameObject:
   - component: {fileID: 356251126}
   - component: {fileID: 356251125}
   m_Layer: 5
-  m_Name: Text (TMP) (2)
+  m_Name: AssembleTask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -667,7 +667,7 @@ GameObject:
   - component: {fileID: 410090520}
   - component: {fileID: 410090519}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: CookingTask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1099,7 +1099,7 @@ GameObject:
   - component: {fileID: 795285698}
   - component: {fileID: 795285697}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: ChopTask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

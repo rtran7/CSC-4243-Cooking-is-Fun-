@@ -102,8 +102,8 @@ public class VictoryScreen : MonoBehaviour
             {
                 tutorialManager.SetActive(true);
                 returnButton.SetActive(false);
-                //Set time scale to 0
-                Time.timeScale = 0f;
+                //Set time scale to 1
+                Time.timeScale = 1f;
                 //Iterate through all ingredients and disable dragScript
                 foreach (GameObject obj in objects)
                 {
