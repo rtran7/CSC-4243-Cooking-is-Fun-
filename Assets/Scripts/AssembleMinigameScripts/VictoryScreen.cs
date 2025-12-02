@@ -24,6 +24,12 @@ public class VictoryScreen : MonoBehaviour
     //Public variable to hold an object with the GameOverScreen script
     public GameOverScreen gameOver;
 
+    //Grab the return button
+    private GameObject returnButton;
+
+    //Grab the return button
+    private GameObject tutorialManager;
+
     //If it exists, grab the gameplay manager
     private GameplayManager gameplayManager;
 
@@ -54,6 +60,14 @@ public class VictoryScreen : MonoBehaviour
         //Grab audio source
         src = audioObj.GetComponent<AudioSource>();
 
+        //Grab the return button
+        returnButton = GameObject.Find("ReturnButton");
+        returnButton.SetActive(false);
+
+        //Grab the tutorial manager
+        tutorialManager = GameObject.Find("TutorialManager");
+        tutorialManager.SetActive(false);
+
         //Initialize played
         played = false;
 
@@ -80,6 +94,46 @@ public class VictoryScreen : MonoBehaviour
 
     void Update()
     {
+
+        //If gameplayManger exists, do the following:
+        try
+        {
+            if(gameplayManager.getCookComplete())
+            {
+                tutorialManager.SetActive(true);
+                returnButton.SetActive(false);
+                //Set time scale to 0
+                Time.timeScale = 0f;
+                //Iterate through all ingredients and disable dragScript
+                foreach (GameObject obj in objects)
+                {
+                    //Get Script in each ingredient
+                    IngredientsScript temp = obj.GetComponent<IngredientsScript>();
+                    //Enable it
+                    temp.enabled = true;
+                }
+            }
+            else
+            {
+                tutorialManager.SetActive(false);
+                returnButton.SetActive(true);
+                //Set time scale to 0
+                Time.timeScale = 0f;
+                //Iterate through all ingredients and disable dragScript
+                foreach (GameObject obj in objects)
+                {
+                    //Get Script in each ingredient
+                    IngredientsScript temp = obj.GetComponent<IngredientsScript>();
+                    //Disable it
+                    temp.enabled = false;
+                }
+            }
+        }
+        catch (System.Exception ex)
+        {
+            Debug.Log("An error occurred: " + ex.Message);
+        }
+
         //If all ingredients have been assembled
         if (ingredientCount == 0 && inOrder)
         {

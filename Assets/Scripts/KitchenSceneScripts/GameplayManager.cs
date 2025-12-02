@@ -13,7 +13,7 @@ public class GameplayManager : MonoBehaviour
 
     // Scene-specific references
     private GameObject victoryManager; //WARNING: Make sure victoryManagerKitchen is not disabled before the game starts
-    private GameObject tutorialManager;
+    private GameObject tutorialManager;//WARNING: Make sure tutorialManagerKitchen is not disabled before the game starts
 
 
     void Awake()
@@ -68,9 +68,14 @@ public class GameplayManager : MonoBehaviour
 
     // Public methods to update state
     public void checkChop() => chopComplete = true;
+    public bool getChopComplete(){return chopComplete;}
+
     public void checkCook() => cookComplete = true;
+    public bool getCookComplete(){return cookComplete;}
+
     public void checkAssemble() => assembleComplete = true;
     public void checkTutorial() => tutorialShown = true;
+
     public GameplayManager getInstance(){return instance;}
     public void destroyInstance() => Destroy(instance.gameObject); 
 }

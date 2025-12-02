@@ -46,12 +46,43 @@ public class ChickenCookMinigame : MonoBehaviour
     public float _prevV = -1f;       // previous normalized value, -1 = not yet set
     private bool taskCompleted;      // Keep track if the user successfully cooked chicken
 
+    //-------------Gameplay manager------------
+    //If it exists, grab the gameplay manager
+    private GameplayManager gameplayManager;
+
+    //--------- Game Objects ------------------
+    private GameObject rawChicken;
+    private GameObject tutorialManager;
+    private GameObject returnButton;
     void Awake()
     {
         if (resultsPanel) resultsPanel.SetActive(false);
         if (meterGroupUI) meterGroupUI.SetActive(false);
         if (continueButton) continueButton.onClick.AddListener(OnContinue);
         taskCompleted = false; // Assume that the player didn't complete the task
+
+        //Grab the raw chicken
+        rawChicken = GameObject.Find("RawChicken");
+        rawChicken.SetActive(false);
+
+        //Grab the tutorial manager
+        tutorialManager = GameObject.Find("TutorialManager");
+        tutorialManager.SetActive(false);
+
+        //Grab the return button
+        returnButton = GameObject.Find("ReturnButton");
+        returnButton.SetActive(false);
+
+        //Grab the gameplay manager if it exist. If it doesn't exist, move on 
+        try
+        {
+            GameObject tempObj = GameObject.Find("GameplayManager");
+            gameplayManager = tempObj.GetComponent<GameplayManager>();
+        }
+        catch (System.Exception ex)
+        {
+            Debug.Log("An error occurred: " + ex.Message);
+        }
     }
 
     //This function is used to return taskCompleted
@@ -74,6 +105,28 @@ public class ChickenCookMinigame : MonoBehaviour
 
     void Update()
     {
+
+        //If gameplayManger exists, do the following:
+        try
+        {
+            if(gameplayManager.getChopComplete())
+            {
+                tutorialManager.SetActive(true);
+                rawChicken.SetActive(true);
+                returnButton.SetActive(false);
+            }
+            else
+            {
+                tutorialManager.SetActive(false);
+                rawChicken.SetActive(false);
+                returnButton.SetActive(true);
+            }
+        }
+        catch (System.Exception ex)
+        {
+            Debug.Log("An error occurred: " + ex.Message);
+        }
+
         if (!_isCooking) return;
 
         // --- Read normalized needle value 0..1, apply invert/offset ---
@@ -139,6 +192,15 @@ public class ChickenCookMinigame : MonoBehaviour
                 verdict = "Perfectly Cooked!";
                 verdictSprite = perfectSprite;
                 taskCompleted = true; //The task has been completed. Set to true
+                //If the gameplay manager exists, signal that the minigame is complete
+                try
+                {
+                    gameplayManager.checkCook();
+                }
+                catch (System.Exception ex)
+                {
+                    Debug.Log("An error occurred: " + ex.Message);
+                }
             }
         }
 
