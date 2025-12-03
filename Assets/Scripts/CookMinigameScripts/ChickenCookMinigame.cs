@@ -45,6 +45,11 @@ public class ChickenCookMinigame : MonoBehaviour
     public int _laps;                // how many times we wrapped past 12 o'clock clockwise
     public float _prevV = -1f;       // previous normalized value, -1 = not yet set
     private bool taskCompleted;      // Keep track if the user successfully cooked chicken
+    //Track how long it takes for the player to complete the game
+    private float elapsedTime;
+
+    //This is used to tell when we should stop the timer
+    private bool isRunning;
 
     //-------------Gameplay manager------------
     //If it exists, grab the gameplay manager
@@ -71,7 +76,6 @@ public class ChickenCookMinigame : MonoBehaviour
 
         //Grab the return button
         returnButton = GameObject.Find("ReturnButton");
-        returnButton.SetActive(false);
 
         //Grab the gameplay manager if it exist. If it doesn't exist, move on 
         try
@@ -83,6 +87,9 @@ public class ChickenCookMinigame : MonoBehaviour
         {
             Debug.Log("An error occurred: " + ex.Message);
         }
+        //Initialize variables
+        elapsedTime = 0f;
+        isRunning = true;
     }
 
     //This function is used to return taskCompleted
@@ -106,15 +113,42 @@ public class ChickenCookMinigame : MonoBehaviour
     void Update()
     {
 
+        //Check if the timer should be running
+        if (isRunning)
+        {
+            elapsedTime += Time.deltaTime;
+        }
         //If gameplayManger exists, do the following:
         try
         {
-            if(gameplayManager.getChopComplete())
+            //If player already completed cooking minigame but returns, do this:
+            if(gameplayManager.getCookComplete())
+            {
+                taskCompleted = true;
+                tutorialManager.SetActive(false);
+                if (HeaderText)    HeaderText.gameObject.SetActive(false);
+                if (meterGroupUI)  meterGroupUI.SetActive(false);
+                if (resultsPanel)  resultsPanel.SetActive(true);
+
+                if (resultText)    resultText.text = "Perfectly Cooked!";
+
+                if (resultImage)
+                {
+                    resultImage.enabled        = true;
+                    resultImage.sprite         = perfectSprite;
+                    resultImage.color          = Color.white;
+                    resultImage.preserveAspect = true;
+                    resultImage.SetNativeSize();       // optional
+                }
+            }
+            //Else If player completed chop minigame, do this:
+            else if(gameplayManager.getChopComplete())
             {
                 tutorialManager.SetActive(true);
                 rawChicken.SetActive(true);
-                returnButton.SetActive(false);
+                
             }
+            //Else assume player didn't complete chop minigame
             else
             {
                 tutorialManager.SetActive(false);
@@ -122,9 +156,11 @@ public class ChickenCookMinigame : MonoBehaviour
                 returnButton.SetActive(true);
             }
         }
+        //If  gameplay manager doesn't exist, do the following
         catch (System.Exception ex)
         {
-            Debug.Log("An error occurred: " + ex.Message);
+            tutorialManager.SetActive(true);
+            rawChicken.SetActive(true);
         }
 
         if (!_isCooking) return;
@@ -192,9 +228,11 @@ public class ChickenCookMinigame : MonoBehaviour
                 verdict = "Perfectly Cooked!";
                 verdictSprite = perfectSprite;
                 taskCompleted = true; //The task has been completed. Set to true
+                isRunning = false;
                 //If the gameplay manager exists, signal that the minigame is complete
                 try
                 {
+                    gameplayManager.setCookTime(elapsedTime);
                     gameplayManager.checkCook();
                 }
                 catch (System.Exception ex)

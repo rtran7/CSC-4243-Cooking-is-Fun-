@@ -28,4 +28,10 @@ public class TutorialScreen : MonoBehaviour
         tutorialPlaying = false;
         Time.timeScale = 1;
     }
+    public void startTutorial()
+    {
+        background.SetActive(true);
+        tutorialPlaying = true;
+        Time.timeScale = 0;
+    }
 }

@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/KitchenScene.unity
     guid: 367f951cc0530d64f84ca6c12da5f03c
+  - enabled: 1
+    path: Assets/Scenes/AssembleMinigame/AssembleTutorial.unity
+    guid: d84d78e37508b9d4d8d51979317e0237
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

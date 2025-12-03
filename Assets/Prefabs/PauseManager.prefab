@@ -960,7 +960,7 @@ GameObject:
   - component: {fileID: 6805319508483217346}
   - component: {fileID: 4693582563945005962}
   - component: {fileID: 3683236874388532810}
-  - component: {fileID: 7447780872235695820}
+  - component: {fileID: 3383600702630809064}
   m_Layer: 0
   m_Name: MainMenuButton
   m_TagString: Untagged
@@ -1070,9 +1070,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7447780872235695820}
-        m_TargetAssemblyTypeName: PlayScene, Assembly-CSharp
-        m_MethodName: playScene
+      - m_Target: {fileID: 3383600702630809064}
+        m_TargetAssemblyTypeName: ResetButton, Assembly-CSharp
+        m_MethodName: ResetGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1082,7 +1082,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &7447780872235695820
+--- !u!114 &3383600702630809064
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1091,7 +1091,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8666301998334591551}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be9c1047e0e92c844b2c02b36883b217, type: 3}
+  m_Script: {fileID: 11500000, guid: 2bbbce809a542aa46ac7e5723f6d8290, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayScene
-  scene: MainMenu
+  m_EditorClassIdentifier: Assembly-CSharp::ResetButton

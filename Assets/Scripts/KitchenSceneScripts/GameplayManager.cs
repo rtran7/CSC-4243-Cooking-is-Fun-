@@ -29,6 +29,15 @@ public class GameplayManager : MonoBehaviour
     private bool cookAlphaChanged;
     private bool assembleAlphaChanged;
 
+    //Track how long it takes for the player to complete the game
+    private float elapsedTime;
+    private float elapsedChop;
+    private float elapsedCook;
+    private float elapsedAssemble;
+
+    //This is used to tell when we should stop the timer
+    private bool isRunning;
+
     void Awake()
     {
         // Singleton pattern
@@ -44,12 +53,14 @@ public class GameplayManager : MonoBehaviour
 
 
         // Initialize global state
-        chopComplete = false;
-        cookComplete = false;
+        chopComplete = true;
+        cookComplete = true;
         assembleComplete = false;
         tutorialShown = false;
         cookAlphaChanged = false;
         assembleAlphaChanged = false;
+        isRunning = true;
+        elapsedTime = 0;
     }
 
     void OnEnable()
@@ -132,30 +143,30 @@ public class GameplayManager : MonoBehaviour
 
     void Update()
     {
+
+        //Increment timer
+        if (isRunning)
+        {
+            elapsedTime += Time.deltaTime;
+        }
+
+        //Check if assemble game is complete
         if (assembleComplete && victoryManager != null)
         {
             texts[2].color = Color.green;
+            isRunning = false;
             victoryManager.SetActive(true);
-        }
+            //Report time
+            TextMeshProUGUI chopText = victoryManager.transform.Find("ChopTime").GetComponent<TextMeshProUGUI>();
+            chopText.text = "Chop time: " + Mathf.Round(elapsedChop) + " seconds";
+            TextMeshProUGUI cookText = victoryManager.transform.Find("CookTime").GetComponent<TextMeshProUGUI>();
+            cookText.text = "Cook time: " + Mathf.Round(elapsedCook)+ " seconds";
+            TextMeshProUGUI assembleText = victoryManager.transform.Find("AssembleTime").GetComponent<TextMeshProUGUI>();
+            assembleText.text = "Assemble time: " + Mathf.Round(elapsedAssemble)+ " seconds";
+            TextMeshProUGUI totalText = victoryManager.transform.Find("TotalTime").GetComponent<TextMeshProUGUI>();
+            totalText.text = "Total time: " + Mathf.Round(elapsedTime)+ " seconds";
 
-        //Check if Chopping game is done
-        if(chopComplete)
-        {
-            //If the text and  cook station exists, do the following
-            try
-            {
-                if(!cookAlphaChanged)
-                {
-                    //Mark the chop text and cook station green
-                    texts[0].color = Color.green;
-                    cookStation.color = Color.green;
-                    changeImageAlpha(cookStation,0.8f);
-                    cookAlphaChanged = true;
-                }
-            }
-            catch{}
         }
-
         //Check if Cooking game is done
         if(cookComplete)
         {
@@ -170,6 +181,23 @@ public class GameplayManager : MonoBehaviour
                     assembleStation.color = Color.green;
                     changeImageAlpha(assembleStation,0.8f);
                     assembleAlphaChanged = true;
+                }
+            }
+            catch{}
+        }
+        //Check if Chopping game is done
+        if(chopComplete)
+        {
+            //If the text and  cook station exists, do the following
+            try
+            {
+                if(!cookAlphaChanged)
+                {
+                    //Mark the chop text and cook station green
+                    texts[0].color = Color.green;
+                    cookStation.color = Color.green;
+                    changeImageAlpha(cookStation,0.8f);
+                    cookAlphaChanged = true;
                 }
             }
             catch{}
@@ -195,4 +223,9 @@ public class GameplayManager : MonoBehaviour
         c.a = value;
         img.color = c;
     }
+
+    public float returnTime(){return elapsedTime;}
+    public void setChopTime(float time){elapsedChop = time;}
+    public void setCookTime(float time){elapsedCook = time;}
+    public void setAssembleTime(float time){elapsedAssemble = time;}
 }
