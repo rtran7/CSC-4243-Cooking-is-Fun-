@@ -24,6 +24,7 @@ public class GameplayManager : MonoBehaviour
     //Grab the  stations
     private Image cookStation;
     private Image assembleStation;
+    private Image chopStation;
 
     //Track whether we should change alpha of stations or not
     private bool cookAlphaChanged;
@@ -53,8 +54,8 @@ public class GameplayManager : MonoBehaviour
 
 
         // Initialize global state
-        chopComplete = true;
-        cookComplete = true;
+        chopComplete = false;
+        cookComplete = false;
         assembleComplete = false;
         tutorialShown = false;
         cookAlphaChanged = false;
@@ -99,12 +100,12 @@ public class GameplayManager : MonoBehaviour
             assembleStation = assembleObject.GetComponent<Image>();
 
             GameObject cuttingObject = GameObject.Find("CuttingStation");
-            Image tempImage = cuttingObject.GetComponent<Image>();
-            //Cutting station is always green
-            tempImage.color = Color.green;
-            Color c = tempImage.color;
+            chopStation = cuttingObject.GetComponent<Image>();
+            //Cutting station starts yellow
+            chopStation.color = Color.yellow;
+            Color c = chopStation.color;
             c.a = 0.8f;
-            tempImage.color = c;
+            chopStation.color = c;
 
             
 
@@ -113,8 +114,10 @@ public class GameplayManager : MonoBehaviour
             {
                 //Mark the cook text and cook station green
                 texts[1].color = Color.green;
-                assembleStation.color = Color.green;
+                assembleStation.color = Color.yellow;
                 changeImageAlpha(assembleStation,0.8f);
+                cookStation.color = Color.green;
+                changeImageAlpha(cookStation,0.8f);
             }
             else
             {
@@ -127,8 +130,10 @@ public class GameplayManager : MonoBehaviour
             {
                 //Mark the chop text and cook station green
                 texts[0].color = Color.green;
-                cookStation.color = Color.green;
+                cookStation.color = Color.yellow;
                 changeImageAlpha(cookStation,0.8f);
+                chopStation.color = Color.green;
+                changeImageAlpha(chopStation,0.8f);
             }
             else
             {
@@ -176,9 +181,11 @@ public class GameplayManager : MonoBehaviour
 
                 if(!assembleAlphaChanged)
                 {
-                    //Mark the chop text and cook station green
+                    //Mark the chop text green, mark the assemble station yellow, and cook station green
                     texts[1].color = Color.green;
-                    assembleStation.color = Color.green;
+                    cookStation.color = Color.green;
+                    changeImageAlpha(cookStation,0.8f);
+                    assembleStation.color = Color.yellow;
                     changeImageAlpha(assembleStation,0.8f);
                     assembleAlphaChanged = true;
                 }
@@ -193,10 +200,12 @@ public class GameplayManager : MonoBehaviour
             {
                 if(!cookAlphaChanged)
                 {
-                    //Mark the chop text and cook station green
+                    //Mark the chop text, cook station yellow,  and chop station green
                     texts[0].color = Color.green;
-                    cookStation.color = Color.green;
+                    cookStation.color = Color.yellow;
                     changeImageAlpha(cookStation,0.8f);
+                    chopStation.color = Color.green;
+                    changeImageAlpha(chopStation,0.8f);
                     cookAlphaChanged = true;
                 }
             }
