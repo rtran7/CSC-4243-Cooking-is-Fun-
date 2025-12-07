@@ -107,39 +107,50 @@ public class GameplayManager : MonoBehaviour
             c.a = 0.8f;
             chopStation.color = c;
 
-            
-
-            //Check if the cooking minigame is done
-            if(cookComplete)
-            {
-                //Mark the cook text and cook station green
-                texts[1].color = Color.green;
-                assembleStation.color = Color.yellow;
-                changeImageAlpha(assembleStation,0.8f);
-                cookStation.color = Color.green;
-                changeImageAlpha(cookStation,0.8f);
-            }
-            else
+            //If chop is finished
+            if(chopComplete && !cookComplete)
             {
                 texts[1].color = Color.white;
+                texts[0].color = Color.green;
+
+                chopStation.color = Color.green;
+                changeImageAlpha(chopStation,0.8f);
+
+                cookStation.color = Color.yellow;
+                changeImageAlpha(cookStation,0.8f);
+
                 assembleStation.color = Color.red;
                 changeImageAlpha(assembleStation,0.8f);
             }
-            //Check if the cutting minigame is done
-            if(chopComplete)
+            //If chop and cook is finished
+            else if(chopComplete && cookComplete)
             {
-                //Mark the chop text and cook station green
+                texts[1].color = Color.green;
                 texts[0].color = Color.green;
-                cookStation.color = Color.yellow;
-                changeImageAlpha(cookStation,0.8f);
+
                 chopStation.color = Color.green;
                 changeImageAlpha(chopStation,0.8f);
+
+                cookStation.color = Color.green;
+                changeImageAlpha(cookStation,0.8f);
+
+                assembleStation.color = Color.yellow;
+                changeImageAlpha(assembleStation,0.8f);
             }
+            //Assume no games are finished
             else
             {
+                texts[1].color = Color.white;
                 texts[0].color = Color.white;
+
+                chopStation.color = Color.yellow;
+                changeImageAlpha(chopStation,0.8f);
+
                 cookStation.color = Color.red;
                 changeImageAlpha(cookStation,0.8f);
+
+                assembleStation.color = Color.red;
+                changeImageAlpha(assembleStation,0.8f);
             }
         }
         catch{}

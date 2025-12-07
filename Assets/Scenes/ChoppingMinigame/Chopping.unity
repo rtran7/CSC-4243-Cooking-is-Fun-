@@ -743,6 +743,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hitbox
   slicable: {fileID: 1335246397}
   sliced: {fileID: 368733254}
+  minimumSliceSpeed: 2
 --- !u!50 &265488009
 Rigidbody2D:
   serializedVersion: 5
@@ -2974,6 +2975,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hitbox
   slicable: {fileID: 1335246397}
   sliced: {fileID: 368733254}
+  minimumSliceSpeed: 2
 --- !u!50 &1291537157
 Rigidbody2D:
   serializedVersion: 5
@@ -3267,6 +3269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hitbox
   slicable: {fileID: 1361116111}
   sliced: {fileID: 1873342704}
+  minimumSliceSpeed: 2
 --- !u!61 &1552592044
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3972,6 +3975,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hitbox
   slicable: {fileID: 1361116111}
   sliced: {fileID: 1213152921}
+  minimumSliceSpeed: 2
 --- !u!61 &1711227728
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4583,6 +4587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hitbox
   slicable: {fileID: 1361116111}
   sliced: {fileID: 1213152921}
+  minimumSliceSpeed: 2
 --- !u!61 &1828777065
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5851,6 +5856,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hitbox
   slicable: {fileID: 1335246397}
   sliced: {fileID: 248494730}
+  minimumSliceSpeed: 2
 --- !u!50 &2092689524
 Rigidbody2D:
   serializedVersion: 5
@@ -6029,6 +6035,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hitbox
   slicable: {fileID: 1335246397}
   sliced: {fileID: 248494730}
+  minimumSliceSpeed: 2
 --- !u!50 &2116885158
 Rigidbody2D:
   serializedVersion: 5
@@ -6150,6 +6157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hitbox
   slicable: {fileID: 1361116111}
   sliced: {fileID: 1873342704}
+  minimumSliceSpeed: 2
 --- !u!61 &2141276099
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6477,6 +6485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hitbox
   slicable: {fileID: 3236431938477099106}
   sliced: {fileID: 1288292058892932232}
+  minimumSliceSpeed: 2
 --- !u!212 &542616107499508884
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6634,6 +6643,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hitbox
   slicable: {fileID: 3236431938477099106}
   sliced: {fileID: 1953272569148299342}
+  minimumSliceSpeed: 2
 --- !u!4 &767164205748232767
 Transform:
   m_ObjectHideFlags: 0
@@ -7993,6 +8003,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hitbox
   slicable: {fileID: 3236431938477099106}
   sliced: {fileID: 1288292058892932232}
+  minimumSliceSpeed: 2
 --- !u!114 &3920351343044756638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8007,6 +8018,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hitbox
   slicable: {fileID: 3236431938477099106}
   sliced: {fileID: 1953272569148299342}
+  minimumSliceSpeed: 2
 --- !u!4 &4102637784033213803
 Transform:
   m_ObjectHideFlags: 0
@@ -8673,6 +8685,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hitbox
   slicable: {fileID: 6205054535770550966}
   sliced: {fileID: 7716420189040586332}
+  minimumSliceSpeed: 2
 --- !u!114 &5293623429647617865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8687,6 +8700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hitbox
   slicable: {fileID: 6205054533840661108}
   sliced: {fileID: 7716420188422469278}
+  minimumSliceSpeed: 2
 --- !u!114 &5517251820558696010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8701,6 +8715,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hitbox
   slicable: {fileID: 6205054535770550966}
   sliced: {fileID: 7056505680768197274}
+  minimumSliceSpeed: 2
 --- !u!114 &5517251821975856776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8715,6 +8730,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hitbox
   slicable: {fileID: 6205054533840661108}
   sliced: {fileID: 7056505682019662424}
+  minimumSliceSpeed: 2
 --- !u!1 &5526812017031538711
 GameObject:
   m_ObjectHideFlags: 0
@@ -8814,8 +8830,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6995860676380484704, guid: 9fa6ff291f60a1f4e9f9e00020f05ba2, type: 3}
       propertyPath: m_text
-      value: Touch the vegetables with the mouse cursor to slice and drag them to
-        the plate. You have 60 seconds
+      value: 'Click and hold the mouse button to enter slicing mode
+
+        While
+        in slicing mode, touch the vegetables to slice
+
+        Then drag ingredients
+        to the plate
+
+        You have 60 seconds'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10852,6 +10875,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hitbox
   slicable: {fileID: 6205054535770550966}
   sliced: {fileID: 7056505680768197274}
+  minimumSliceSpeed: 2
 --- !u!114 &8108714970762114578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10866,6 +10890,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hitbox
   slicable: {fileID: 6205054533840661108}
   sliced: {fileID: 7056505682019662424}
+  minimumSliceSpeed: 2
 --- !u!50 &8237327534054180923
 Rigidbody2D:
   serializedVersion: 5
@@ -11691,6 +11716,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hitbox
   slicable: {fileID: 6205054533840661108}
   sliced: {fileID: 7716420188422469278}
+  minimumSliceSpeed: 2
 --- !u!114 &9065390245913071253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11705,6 +11731,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hitbox
   slicable: {fileID: 6205054535770550966}
   sliced: {fileID: 7716420189040586332}
+  minimumSliceSpeed: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
