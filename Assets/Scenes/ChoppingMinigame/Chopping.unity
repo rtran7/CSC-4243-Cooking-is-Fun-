@@ -200,7 +200,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 6026037207541976905, guid: 2ad434460b045486ba14af8b0d3651e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -322,6 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e3bad3ff3cf4a76becce78a03c37ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dragging
+  clickRadius: 1
 --- !u!1001 &97674055
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -649,7 +650,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 8360868843827752376, guid: 756cc6345e47b4513a20d1bc7b53ebe5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1338,7 +1339,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 989718829306223112, guid: 5b486bc602de7451daf8699a28c281df, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1532,7 +1533,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -2138,7 +2139,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 8375610148009327131, guid: 25c869f0414d24b189664062919e6af3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2255,6 +2256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e3bad3ff3cf4a76becce78a03c37ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dragging
+  clickRadius: 1
 --- !u!1 &1093731059
 GameObject:
   m_ObjectHideFlags: 0
@@ -2392,6 +2394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e3bad3ff3cf4a76becce78a03c37ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dragging
+  clickRadius: 1
 --- !u!50 &1095444188
 Rigidbody2D:
   serializedVersion: 5
@@ -2465,7 +2468,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 215192937638281391, guid: 033cb7b6f12444eb89accefe82652f0d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2876,6 +2879,52 @@ Transform:
   - {fileID: 248494731}
   - {fileID: 368733255}
   m_Father: {fileID: 1335246398}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1262112759
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1262112761}
+  - component: {fileID: 1262112760}
+  m_Layer: 0
+  m_Name: Walls
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1262112760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262112759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4088de329ddf1475aa895a6e4f321d80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  wallThickness: 1
+  clampPadding: 0.3
+--- !u!4 &1262112761
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262112759}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1291537154
 GameObject:
@@ -3561,7 +3610,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -2054555239303367443, guid: 1bc4172ad26534c2dac39f4f423a49af, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3670,6 +3719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e3bad3ff3cf4a76becce78a03c37ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dragging
+  clickRadius: 1
 --- !u!1 &1656391182
 GameObject:
   m_ObjectHideFlags: 0
@@ -3717,6 +3767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e3bad3ff3cf4a76becce78a03c37ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dragging
+  clickRadius: 1
 --- !u!50 &1656391185
 Rigidbody2D:
   serializedVersion: 5
@@ -3790,7 +3841,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 3637342013892485042, guid: 8bb96d19667e04a2c9487b1642b3972c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4170,6 +4221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e3bad3ff3cf4a76becce78a03c37ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dragging
+  clickRadius: 1
 --- !u!50 &1801711866
 Rigidbody2D:
   serializedVersion: 5
@@ -4243,7 +4295,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 4196906886622151783, guid: db7d976de8b1b497d913e824f8a6d0e4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5010,7 +5062,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -3296991134469929637, guid: bdded97553b354720aa7b222996ac67e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5126,6 +5178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e3bad3ff3cf4a76becce78a03c37ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dragging
+  clickRadius: 1
 --- !u!1 &1971368380
 GameObject:
   m_ObjectHideFlags: 0
@@ -5445,6 +5498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e3bad3ff3cf4a76becce78a03c37ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dragging
+  clickRadius: 1
 --- !u!50 &2061437297
 Rigidbody2D:
   serializedVersion: 5
@@ -5518,7 +5572,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -7676465527544745259, guid: 2ff1cdeae57984346855d5c02ce41157, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -6469,7 +6523,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 840632203572466195, guid: 6841028fff66c4055a9801a7915648d4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -6527,7 +6581,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 840632203572466195, guid: 6841028fff66c4055a9801a7915648d4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -6644,7 +6698,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 8360868843827752376, guid: 756cc6345e47b4513a20d1bc7b53ebe5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -7155,7 +7209,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -2054555239303367443, guid: 1bc4172ad26534c2dac39f4f423a49af, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -7764,7 +7818,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 6026037207541976905, guid: 2ad434460b045486ba14af8b0d3651e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -7805,6 +7859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e3bad3ff3cf4a76becce78a03c37ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dragging
+  clickRadius: 1
 --- !u!114 &3328197050336920992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7817,6 +7872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e3bad3ff3cf4a76becce78a03c37ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dragging
+  clickRadius: 1
 --- !u!114 &3430355835899172391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7829,6 +7885,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e3bad3ff3cf4a76becce78a03c37ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dragging
+  clickRadius: 1
 --- !u!114 &3430355836068499173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7841,6 +7898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e3bad3ff3cf4a76becce78a03c37ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dragging
+  clickRadius: 1
 --- !u!114 &3648681424550237918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7853,6 +7911,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e3bad3ff3cf4a76becce78a03c37ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dragging
+  clickRadius: 1
 --- !u!114 &3648681426097425948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7865,6 +7924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e3bad3ff3cf4a76becce78a03c37ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dragging
+  clickRadius: 1
 --- !u!50 &3668362659395119642
 Rigidbody2D:
   serializedVersion: 5
@@ -7993,6 +8053,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e3bad3ff3cf4a76becce78a03c37ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dragging
+  clickRadius: 1
 --- !u!212 &4384309649639423264
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8039,7 +8100,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 8375610148009327131, guid: 25c869f0414d24b189664062919e6af3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -8289,6 +8350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e3bad3ff3cf4a76becce78a03c37ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dragging
+  clickRadius: 1
 --- !u!114 &4743276275651963402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8301,6 +8363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e3bad3ff3cf4a76becce78a03c37ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dragging
+  clickRadius: 1
 --- !u!4 &4763025932232613757
 Transform:
   m_ObjectHideFlags: 0
@@ -8432,7 +8495,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 4679584805934533051, guid: bcd41008c13b140aca9f7d0e725e3c46, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -8490,7 +8553,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 4679584805934533051, guid: bcd41008c13b140aca9f7d0e725e3c46, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -8595,6 +8658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e3bad3ff3cf4a76becce78a03c37ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dragging
+  clickRadius: 1
 --- !u!114 &5293623428512520075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8924,6 +8988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e3bad3ff3cf4a76becce78a03c37ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dragging
+  clickRadius: 1
 --- !u!60 &6108838358723733431
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -9007,6 +9072,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e3bad3ff3cf4a76becce78a03c37ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dragging
+  clickRadius: 1
 --- !u!1 &6197209635977019077
 GameObject:
   m_ObjectHideFlags: 0
@@ -9131,7 +9197,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -5078287608791331470, guid: ce75b9b83cd9142b0b0d14f7f8095750, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -9189,7 +9255,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -5078287608791331470, guid: ce75b9b83cd9142b0b0d14f7f8095750, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -9994,7 +10060,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -8717775137863759224, guid: 094edef9cc02a4fb7b92a91089025f54, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -10116,7 +10182,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -8717775137863759224, guid: 094edef9cc02a4fb7b92a91089025f54, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -11108,7 +11174,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -3017155958733927693, guid: 3f7898ebfe82e4b7abf3c7c832c44614, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -11166,7 +11232,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -3017155958733927693, guid: 3f7898ebfe82e4b7abf3c7c832c44614, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -11534,7 +11600,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -3296991134469929637, guid: bdded97553b354720aa7b222996ac67e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -11655,3 +11721,4 @@ SceneRoots:
   - {fileID: 2096928556}
   - {fileID: 1124709768}
   - {fileID: 1728288523}
+  - {fileID: 1262112761}

@@ -2,84 +2,152 @@ using UnityEngine;
 
 public class Dragging : MonoBehaviour
 {
-  private bool isDragging = false;
+    private bool isDragging = false;
     private Vector3 offset;
     private Camera mainCamera;
+    private Rigidbody2D rb;
 
     private bool hasBeenCounted = false;
+
+    // Make dragging more forgiving
+    [SerializeField] private float clickRadius = 1f; // Adjust this for sensitivity
 
     void Start()
     {
         mainCamera = Camera.main;
 
-        Rigidbody2D body = GetComponent<Rigidbody2D>();
-    if (body != null)
+        rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.bodyType = RigidbodyType2D.Dynamic; 
+            rb.gravityScale = 0; 
+            rb.linearDamping = 5f;
+            rb.angularDamping = 3f;
+            rb.sleepMode = RigidbodySleepMode2D.NeverSleep;
+        }
+    }
+
+    void Update()
     {
-        body.bodyType = RigidbodyType2D.Dynamic; 
-        body.gravityScale = 0; 
-        body.linearDamping = 2f; 
+        // Manual click detection for better responsiveness
+        if (Input.GetMouseButtonDown(0) && !isDragging)
+        {
+            Vector3 mousePos = GetMouseWorldPosition();
+            float distance = Vector2.Distance(transform.position, mousePos);
+            
+            // Check if click is within radius
+            if (distance <= clickRadius)
+            {
+                // Check if this is the closest draggable object
+                Collider2D[] nearbyColliders = Physics2D.OverlapCircleAll(mousePos, clickRadius);
+                Dragging closestDraggable = null;
+                float closestDistance = float.MaxValue;
+                
+                foreach (Collider2D col in nearbyColliders)
+                {
+                    Dragging draggable = col.GetComponent<Dragging>();
+                    if (draggable != null && draggable.enabled)
+                    {
+                        float dist = Vector2.Distance(col.transform.position, mousePos);
+                        if (dist < closestDistance)
+                        {
+                            closestDistance = dist;
+                            closestDraggable = draggable;
+                        }
+                    }
+                }
+                
+                // Only start dragging if this is the closest object
+                if (closestDraggable == this)
+                {
+                    StartDragging(mousePos);
+                }
+            }
+        }
+        
+        if (Input.GetMouseButtonUp(0) && isDragging)
+        {
+            StopDragging();
+        }
     }
-    }
-    void OnMouseDown()
+
+    void StartDragging(Vector3 mousePos)
     {
         isDragging = true;
-        offset = transform.position - GetMouseWorldPosition();
-    }
-
-    void OnMouseDrag()
-    {
-        if (isDragging)
+        offset = transform.position - mousePos;
+        
+        if (rb != null)
         {
-            transform.position = GetMouseWorldPosition() + offset;
+            rb.WakeUp();
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+        }
+        
+        // Disable RollingVeg when dragging starts
+        RollingVeg rollingVeg = GetComponent<RollingVeg>();
+        if (rollingVeg != null)
+        {
+            rollingVeg.enabled = false;
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void FixedUpdate()
     {
-        if (other.CompareTag("Plate") && !hasBeenCounted)
+        if (isDragging && rb != null)
         {
-            hasBeenCounted = true;
-            this.enabled = false;
+            Vector3 targetPosition = GetMouseWorldPosition() + offset;
+            rb.MovePosition(targetPosition);
+            rb.angularVelocity = 0f;
+        }
+    }
 
-            if (GameManager.Instance != null)
+    void StopDragging()
+    {
+        isDragging = false;
+        
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+        }
+        
+        if (hasBeenCounted) return;
+        
+        Collider2D[] overlaps = Physics2D.OverlapCircleAll(transform.position, 0.5f);
+        foreach (Collider2D col in overlaps)
+        {
+            if (col.CompareTag("Plate"))
             {
-                GameManager.Instance.PieceReachedPlate();
+                hasBeenCounted = true;
+                this.enabled = false;
+                
+                if (GameManager.Instance != null)
+                {
+                    GameManager.Instance.PieceReachedPlate();
+                }
+                
+                Destroy(gameObject, 0.5f);
+                return;
             }
-
-            Destroy(gameObject, 0.5f);
         }
     }
 
-
-
-    void OnMouseUp()
+   void OnTriggerEnter2D(Collider2D other)
 {
-    isDragging = false;
-    
-    if (hasBeenCounted) return;
-    
-    Collider2D[] overlaps = Physics2D.OverlapCircleAll(transform.position, 0.5f);
-    foreach (Collider2D col in overlaps)
+   
+    if (other.CompareTag("Plate") && !hasBeenCounted && !isDragging)
     {
-        if (col.CompareTag("Plate"))
+        hasBeenCounted = true;
+        this.enabled = false;
+
+        if (GameManager.Instance != null)
         {
-            hasBeenCounted = true;
-            this.enabled = false;
-            
-            if (GameManager.Instance != null)
-            {
-                GameManager.Instance.PieceReachedPlate();
-            }
-            
-            Destroy(gameObject, 0.5f);
-            return;
+            GameManager.Instance.PieceReachedPlate();
         }
+
+        Destroy(gameObject, 0.5f);
     }
 }
-
-
-
-
     Vector3 GetMouseWorldPosition()
     {
         Vector3 mousePoint = Input.mousePosition;
@@ -87,7 +155,15 @@ public class Dragging : MonoBehaviour
         return mainCamera.ScreenToWorldPoint(mousePoint);
     }
 
-   
-
-
+    
 }
+
+
+
+
+
+
+
+
+
+
