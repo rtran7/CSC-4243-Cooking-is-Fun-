@@ -5,21 +5,40 @@ using UnityEngine;
 
 public class Hitbox : MonoBehaviour
 {
-  
-   [SerializeField] private SlicableTomato slicable;
-  [SerializeField] private GameObject sliced;
+    [SerializeField] private SlicableTomato slicable;
+    [SerializeField] private GameObject sliced;
+    [SerializeField] private float minimumSliceSpeed = 2f; 
 
-  public void OnMouseExit()
-  {
-      if (TutorialScreen.tutorialPlaying || PauseScreen.gameIsPaused)
-           return;
+    private Vector3 lastMousePosition;
+    private float mouseVelocity;
 
-    if(slicable.getSlicedObject() == null)
+    void Start()
     {
-      slicable.setSlicedObject(sliced);
-      slicable.Slice();
-      }
-   
+        lastMousePosition = Input.mousePosition;
+    }
+
+    void Update()
+    {
+       
+        Vector3 currentMousePosition = Input.mousePosition;
+        float distance = Vector3.Distance(currentMousePosition, lastMousePosition);
+        mouseVelocity = distance / Time.deltaTime;
+        lastMousePosition = currentMousePosition;
+    }
+
+    public void OnMouseExit()
+    {
+        if (TutorialScreen.tutorialPlaying || PauseScreen.gameIsPaused)
+            return;
+
         
+        if (mouseVelocity < minimumSliceSpeed)
+            return;
+
+        if (slicable.getSlicedObject() == null)
+        {
+            slicable.setSlicedObject(sliced);
+            slicable.Slice();
+        }
     }
 }

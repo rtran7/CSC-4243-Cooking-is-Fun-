@@ -10,9 +10,6 @@ public class SlicableTomato : MonoBehaviour
 
     private AudioSource src;
 
-   
-
-
     void Awake()
     {
 
