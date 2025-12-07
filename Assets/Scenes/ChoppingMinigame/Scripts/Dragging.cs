@@ -8,9 +8,8 @@ public class Dragging : MonoBehaviour
     private Rigidbody2D rb;
 
     private bool hasBeenCounted = false;
-
-    // Make dragging more forgiving
-    [SerializeField] private float clickRadius = 1f; // Adjust this for sensitivity
+   
+    [SerializeField] private float clickRadius = 1f; 
 
     void Start()
     {
@@ -29,16 +28,16 @@ public class Dragging : MonoBehaviour
 
     void Update()
     {
-        // Manual click detection for better responsiveness
+      
         if (Input.GetMouseButtonDown(0) && !isDragging)
         {
             Vector3 mousePos = GetMouseWorldPosition();
             float distance = Vector2.Distance(transform.position, mousePos);
             
-            // Check if click is within radius
+           
             if (distance <= clickRadius)
             {
-                // Check if this is the closest draggable object
+               
                 Collider2D[] nearbyColliders = Physics2D.OverlapCircleAll(mousePos, clickRadius);
                 Dragging closestDraggable = null;
                 float closestDistance = float.MaxValue;
@@ -57,7 +56,6 @@ public class Dragging : MonoBehaviour
                     }
                 }
                 
-                // Only start dragging if this is the closest object
                 if (closestDraggable == this)
                 {
                     StartDragging(mousePos);
@@ -83,7 +81,7 @@ public class Dragging : MonoBehaviour
             rb.angularVelocity = 0f;
         }
         
-        // Disable RollingVeg when dragging starts
+       
         RollingVeg rollingVeg = GetComponent<RollingVeg>();
         if (rollingVeg != null)
         {
@@ -157,13 +155,3 @@ public class Dragging : MonoBehaviour
 
     
 }
-
-
-
-
-
-
-
-
-
-
