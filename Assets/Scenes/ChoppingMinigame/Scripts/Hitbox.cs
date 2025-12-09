@@ -8,7 +8,6 @@ public class Hitbox : MonoBehaviour
     [SerializeField] private GameObject sliced;
     [SerializeField] private float minimumSliceSpeed = 100f;
     
-    private bool isMouseOver = false;
     private Vector3 lastMousePosition;
     private float mouseVelocity;
     private bool alreadySliced = false;
@@ -35,9 +34,10 @@ public class Hitbox : MonoBehaviour
         if (alreadySliced)
             return;
 
-       
-        if (Input.GetMouseButton(0) && mouseVelocity >= minimumSliceSpeed)
+      
+        if (mouseVelocity >= minimumSliceSpeed)
         {
+           
             PerformSlice();
         }
     }
@@ -49,8 +49,7 @@ public class Hitbox : MonoBehaviour
             slicable.setSlicedObject(sliced);
             slicable.Slice();
             alreadySliced = true;
+            
         }
     }
 }
-
-
