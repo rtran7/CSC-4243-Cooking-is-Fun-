@@ -1,4 +1,3 @@
-using System.Runtime.CompilerServices;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,10 +6,12 @@ public class Hitbox : MonoBehaviour
 {
     [SerializeField] private SlicableTomato slicable;
     [SerializeField] private GameObject sliced;
-    [SerializeField] private float minimumSliceSpeed = 2f; 
-
+    [SerializeField] private float minimumSliceSpeed = 100f;
+    
+    private bool isMouseOver = false;
     private Vector3 lastMousePosition;
     private float mouseVelocity;
+    private bool alreadySliced = false;
 
     void Start()
     {
@@ -26,19 +27,30 @@ public class Hitbox : MonoBehaviour
         lastMousePosition = currentMousePosition;
     }
 
-    public void OnMouseExit()
+    private void OnMouseOver()
     {
         if (TutorialScreen.tutorialPlaying || PauseScreen.gameIsPaused)
             return;
 
-        
-        if (mouseVelocity < minimumSliceSpeed)
+        if (alreadySliced)
             return;
 
+       
+        if (Input.GetMouseButton(0) && mouseVelocity >= minimumSliceSpeed)
+        {
+            PerformSlice();
+        }
+    }
+
+    private void PerformSlice()
+    {
         if (slicable.getSlicedObject() == null)
         {
             slicable.setSlicedObject(sliced);
             slicable.Slice();
+            alreadySliced = true;
         }
     }
 }
+
+

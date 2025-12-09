@@ -2,22 +2,16 @@ using UnityEngine;
 
 public class SlicableTomato : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] private GameObject unslicedObject;
     private GameObject slicedObject;
-
     public AudioClip sliceClip;
-
     private AudioSource src;
 
     void Awake()
     {
-
         GameObject audioObj = GameObject.Find("VegetableSlice");
         src = audioObj.GetComponent<AudioSource>();
     }
-
-
 
     public void setSlicedObject(GameObject slicedObject)
     {
@@ -37,11 +31,7 @@ public class SlicableTomato : MonoBehaviour
         if (rv != null)
         {
             src.PlayOneShot(sliceClip);
-
             rv.OnSliced();
         }
-
     }
-
-
 }
