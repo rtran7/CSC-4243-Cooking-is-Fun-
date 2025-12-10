@@ -82,10 +82,10 @@ public class Dragging : MonoBehaviour
         }
         
        
-        RollingVeg rollingVeg = GetComponent<RollingVeg>();
-        if (rollingVeg != null)
+        VegMoves movingV = GetComponent<VegMoves>();
+        if (movingV != null)
         {
-            rollingVeg.enabled = false;
+            movingV.enabled = false;
         }
     }
 

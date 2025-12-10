@@ -6,7 +6,7 @@ public class Hitbox : MonoBehaviour
 {
     [SerializeField] private SlicableTomato slicable;
     [SerializeField] private GameObject sliced;
-    [SerializeField] private float minimumSliceSpeed = 100f;
+    [SerializeField] private float minimumSliceSpeed = 150f;
     
     private Vector3 lastMousePosition;
     private float mouseVelocity;
@@ -19,7 +19,6 @@ public class Hitbox : MonoBehaviour
 
     void Update()
     {
-       
         Vector3 currentMousePosition = Input.mousePosition;
         float distance = Vector3.Distance(currentMousePosition, lastMousePosition);
         mouseVelocity = distance / Time.deltaTime;
@@ -34,10 +33,9 @@ public class Hitbox : MonoBehaviour
         if (alreadySliced)
             return;
 
-      
-        if (mouseVelocity >= minimumSliceSpeed)
+        // Must hold mouse button AND swipe fast
+        if (Input.GetMouseButton(0) && mouseVelocity >= minimumSliceSpeed)
         {
-           
             PerformSlice();
         }
     }
@@ -49,7 +47,6 @@ public class Hitbox : MonoBehaviour
             slicable.setSlicedObject(sliced);
             slicable.Slice();
             alreadySliced = true;
-            
         }
     }
 }

@@ -27,7 +27,7 @@ public class SlicableTomato : MonoBehaviour
     {
         unslicedObject.SetActive(false);
         slicedObject.SetActive(true);
-        RollingVeg rv = GetComponent<RollingVeg>();
+        VegMoves rv = GetComponent<VegMoves>();
         if (rv != null)
         {
             src.PlayOneShot(sliceClip);
