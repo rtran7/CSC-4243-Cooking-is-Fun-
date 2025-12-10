@@ -11,6 +11,8 @@ public class Victory2 : MonoBehaviour
     //Check if audiosource is played
     private bool played;
 
+    private bool inPractice;
+
     void Awake()
     {
         //Grab the transform of this child object

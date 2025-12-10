@@ -9,16 +9,12 @@ public class GameManager : MonoBehaviour
 
     public Victory2 victory2;
 
-    //If it exists, grab the gameplay manager
+    [SerializeField]
+    private bool inPractice;
+
     private GameplayManager gameplayManager;
-
-    //Grab the tutorial manager
     private GameObject tutorial;
-
-    //Track how long it takes for the player to complete the game
     private float elapsedTime;
-
-    //This is used to tell when we should stop the timer
     private bool isRunning;
 
     void Awake()
@@ -29,37 +25,42 @@ public class GameManager : MonoBehaviour
         }
 
         tutorial = GameObject.Find("TutorialManager");
-
-        //Grab the gameplay manager if it exist. If it doesn't exist, move on 
-        try
+        string currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        if (currentScene.Contains("Tutorial") || currentScene.Contains("Practice"))
         {
-            GameObject tempObj = GameObject.Find("GameplayManager");
-            gameplayManager = tempObj.GetComponent<GameplayManager>();
+            inPractice = true;
+            Debug.Log("Practice mode enabled");
         }
-        catch (System.Exception ex)
+       
+        if (victory2 == null)
         {
-            Debug.Log("An error occurred: " + ex.Message);
+            GameObject victoryObj = GameObject.Find("VictoryManager"); 
+            if (victoryObj != null)
+            {
+                victory2 = victoryObj.GetComponent<Victory2>();
+               
+            }
+           
         }
 
-        //Initialize variables
         elapsedTime = 0f;
         isRunning = true;
     }
 
     void Start()
     {
-        
         totalPieces = 10;
         Debug.Log("Total pieces to collect: " + totalPieces);
 
-        //If gameplay manager exists, do the following
         try
         {
-           //If the player already completed this minigame but returns, do this
-           if(gameplayManager.getChopComplete())
+           if(gameplayManager != null && gameplayManager.getChopComplete())
            {
                 tutorial.SetActive(false);
-                victory2.Setup();
+                if (victory2 != null)
+                {
+                    victory2.Setup();
+                }
            }
         }
         catch (System.Exception ex)
@@ -70,7 +71,6 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        //Check if the timer should be running
         if (isRunning)
         {
             elapsedTime += Time.deltaTime;
@@ -84,26 +84,41 @@ public class GameManager : MonoBehaviour
 
         if (piecesOnPlate == totalPieces)
         {
-
-            //If the gameplay manager exists, signal that the minigame is complete
-            try
-            {
-                gameplayManager.setChopTime(elapsedTime);
-                gameplayManager.checkChop();
-            }
-            catch (System.Exception ex)
-            {
-                Debug.Log("An error occurred: " + ex.Message);
-            }
             isRunning = false;
-            EndGame();
-            victory2.Setup();
+            
+           
+            if (!inPractice)
+            {
+             
+                try
+                {
+                    if (gameplayManager != null)
+                    {
+                        gameplayManager.setChopTime(elapsedTime);
+                        gameplayManager.checkChop();
+                        Debug.Log("Progress saved - Time: " + elapsedTime);
+                    }
+                }
+                catch (System.Exception ex)
+                {
+                    Debug.Log("An error occurred: " + ex.Message);
+                }
+            }
+          
+            else if (inPractice)
+            {
+                Debug.Log("Practice complete - Time: " + elapsedTime + " (not saved)");
+            }
+            
+           
+            if (victory2 != null)
+            {
+                victory2.Setup();
+            }
+            else
+            {
+                Debug.LogError("Cannot show victory screen - Victory2 is null!");
+            }
         }
     }
-
-    void EndGame()
-    {
-        Debug.Log("All pieces collected! Game Over!");
-    }
-
 }
