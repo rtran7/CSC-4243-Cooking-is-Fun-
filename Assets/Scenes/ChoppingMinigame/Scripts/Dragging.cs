@@ -7,9 +7,21 @@ public class Dragging : MonoBehaviour
     private Camera mainCamera;
     private Rigidbody2D rb;
 
+    public AudioClip plateClip;
+    private AudioSource src;
+
     private bool hasBeenCounted = false;
    
     [SerializeField] private float clickRadius = 1f; 
+
+
+      void Awake()
+    {
+        GameObject audioObj = GameObject.Find("PlateSFX");
+        src = audioObj.GetComponent<AudioSource>();
+       
+    }
+
 
     void Start()
     {
@@ -130,6 +142,9 @@ public class Dragging : MonoBehaviour
         }
     }
 
+
+    
+
    void OnTriggerEnter2D(Collider2D other)
 {
    
@@ -137,6 +152,13 @@ public class Dragging : MonoBehaviour
     {
         hasBeenCounted = true;
         this.enabled = false;
+
+
+         if (src != null && plateClip != null)
+            {
+                Debug.Log("hello");
+                src.PlayOneShot(plateClip);
+            }
 
         if (GameManager.Instance != null)
         {
