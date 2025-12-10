@@ -25,11 +25,17 @@ public class GameManager : MonoBehaviour
         }
 
         tutorial = GameObject.Find("TutorialManager");
+        
         string currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         if (currentScene.Contains("Tutorial") || currentScene.Contains("Practice"))
         {
             inPractice = true;
-            Debug.Log("Practice mode enabled");
+        }
+
+        GameObject tempObj = GameObject.Find("GameplayManager");
+        if (tempObj != null)
+        {
+            gameplayManager = tempObj.GetComponent<GameplayManager>();
         }
        
         if (victory2 == null)
@@ -38,9 +44,7 @@ public class GameManager : MonoBehaviour
             if (victoryObj != null)
             {
                 victory2 = victoryObj.GetComponent<Victory2>();
-               
             }
-           
         }
 
         elapsedTime = 0f;
@@ -50,22 +54,14 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         totalPieces = 10;
-        Debug.Log("Total pieces to collect: " + totalPieces);
 
-        try
+        if(gameplayManager != null && gameplayManager.getChopComplete())
         {
-           if(gameplayManager != null && gameplayManager.getChopComplete())
-           {
-                tutorial.SetActive(false);
-                if (victory2 != null)
-                {
-                    victory2.Setup();
-                }
-           }
-        }
-        catch (System.Exception ex)
-        {
-            Debug.Log("An error occurred: " + ex.Message);
+            tutorial.SetActive(false);
+            if (victory2 != null)
+            {
+                victory2.Setup();
+            }
         }
     }
 
@@ -80,44 +76,23 @@ public class GameManager : MonoBehaviour
     public void PieceReachedPlate()
     {
         piecesOnPlate++;
-        Debug.Log("Pieces on plate: " + piecesOnPlate + "/" + totalPieces);
 
         if (piecesOnPlate == totalPieces)
         {
             isRunning = false;
             
-           
             if (!inPractice)
             {
-             
-                try
+                if (gameplayManager != null)
                 {
-                    if (gameplayManager != null)
-                    {
-                        gameplayManager.setChopTime(elapsedTime);
-                        gameplayManager.checkChop();
-                        Debug.Log("Progress saved - Time: " + elapsedTime);
-                    }
+                    gameplayManager.setChopTime(elapsedTime);
+                    gameplayManager.checkChop();
                 }
-                catch (System.Exception ex)
-                {
-                    Debug.Log("An error occurred: " + ex.Message);
-                }
-            }
-          
-            else if (inPractice)
-            {
-                Debug.Log("Practice complete - Time: " + elapsedTime + " (not saved)");
             }
             
-           
             if (victory2 != null)
             {
                 victory2.Setup();
-            }
-            else
-            {
-                Debug.LogError("Cannot show victory screen - Victory2 is null!");
             }
         }
     }
